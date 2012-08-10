@@ -1,0 +1,30 @@
+<%= javascript_include_tag "raphael-min" %>
+<%= javascript_include_tag "clock" %>
+
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @clock.name %>
+</p>
+
+<p>
+  <b>Diff:</b>
+  <%= @clock.diff %>
+</p>
+
+<div style="padding: 100px 150px;">
+  <table border="0">
+  <tr><td> <div id="clock_id" style="display:inline-block;"></div></td>
+  <td> <div style="padding: 0px 20px;"><h2>The time is <span id="digi_clock"></span></h2></div></td></tr>
+  </table>
+
+</div>
+<script type="text/javascript">
+  var diff = <%= @clock.diff %>;
+   draw_clock(0,diff,0);
+</script>
+
+<%= link_to 'Edit', edit_clock_path(@clock) %> |
+<%= link_to 'Back', clocks_path %>

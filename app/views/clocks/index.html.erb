@@ -1,13 +1,23 @@
-<%= javascript_include_tag "raphael-min" %>
-<%= javascript_include_tag "clock" %>
+<h1>Listing clocks</h1>
 
-<div style="padding: 100px 150px;">
-  <table border="0">
-  <tr><td> <div id="clock_id" style="display:inline-block;"></div></td>
-  <td> <div style="padding: 0px 20px;"><h2>The time is <span id="digi_clock"></span></h2></div></td></tr>
-  </table>
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
 
-</div>
-<script type="text/javascript">
-  draw_clock(0,0,0);
-</script>
+<% @clocks.each do |clock| %>
+  <tr>
+    <td><%= clock.name %></td>
+    <td><%= link_to 'Show', clock %></td>
+    <td><%= link_to 'Edit', edit_clock_path(clock) %></td>
+    <td><%= link_to 'Destroy', clock, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Clock', new_clock_path %>
